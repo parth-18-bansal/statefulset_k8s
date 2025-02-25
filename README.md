@@ -1,0 +1,1 @@
+# statefulset_k8s
