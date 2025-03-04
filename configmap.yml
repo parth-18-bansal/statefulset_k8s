@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+    app.kubernetes.io/name: mysql
+data:
+  primary.cnf: |
+    # Apply this config only on the primary.
+    [mysqld]
+    log-bin=mysql-bin
+    binlog-do-db=mydb  # Optional: Only replicate a specific database
+    
+  replica.cnf: |
+    # Apply this config only on replicas.
+    [mysqld]
+    relay-log=mysql-relay-bin
+   
+
